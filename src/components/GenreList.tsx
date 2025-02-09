@@ -10,9 +10,10 @@ import {
 } from "@chakra-ui/react";
 
 interface Props {
+  selectedgenre: Genre | null;
   onSelectgenre: (genre: Genre) => void;
 }
-export default function GenreList({ onSelectgenre }: Props) {
+export default function GenreList({ selectedgenre, onSelectgenre }: Props) {
   const { data, isLoading, error } = useGenres();
 
   if (error) return null;
@@ -28,6 +29,7 @@ export default function GenreList({ onSelectgenre }: Props) {
               src={getCroppedImageUrl(genre.image_background)}
             />
             <Link
+              fontWeight={genre.id === selectedgenre?.id ? "bold" : "normal"}
               onClick={() => onSelectgenre(genre)}
               href="#"
               fontSize="lg"
