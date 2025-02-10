@@ -10,7 +10,7 @@ interface Props {
   gameQuery: GameQuery;
 }
 
-export default function GameGrid({ gameQuery}: Props) {
+export default function GameGrid({ gameQuery }: Props) {
   const { error, data, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
@@ -18,9 +18,9 @@ export default function GameGrid({ gameQuery}: Props) {
     <>
       {error && <Text>{error}</Text>}
       <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         padding="10px"
-        gap={3}
+        gap={6}
       >
         {isLoading &&
           skeletons.map((s) => (
