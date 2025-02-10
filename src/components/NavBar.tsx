@@ -4,11 +4,15 @@ import { ColorModeButton } from "./ui/color-mode";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./searchInput";
 
-export default function NavBar() {
+interface Props {
+  onSearch: (searchvalue: string) => void;
+}
+
+export default function NavBar({ onSearch }: Props) {
   return (
     <HStack padding="10px">
       <Image src={logo} boxSize="60px" />
-      <SearchInput />
+      <SearchInput onSearch={onSearch} />
       {/* <ColorModeSwitch /> */}
       <ColorModeButton />
     </HStack>
