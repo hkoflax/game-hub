@@ -17,7 +17,7 @@ export default function SearchInput({ onSearch }: Props) {
       }}
     >
       <InputGroup flex="1" startElement={<BsSearch />}>
-        <Input
+        <Input style={{ width: "100%" }}
           ref={ref}
           borderRadius={20}
           placeholder="search games ..."
