@@ -1,6 +1,7 @@
 import useGenres, { Genre } from "@/hooks/useGenre";
 import getCroppedImageUrl from "@/services/image-url";
 import {
+  Heading,
   HStack,
   Image,
   Link,
@@ -19,27 +20,33 @@ export default function GenreList({ selectedgenre, onSelectgenre }: Props) {
   if (error) return null;
   if (isLoading) return <Spinner />;
   return (
-    <ListRoot variant="plain">
-      {data.map((genre) => (
-        <ListItem key={genre.id} paddingY="5px">
-          <HStack>
-            <Image
-              boxSize="32px"
-              borderRadius={8}
-              src={getCroppedImageUrl(genre.image_background)}
-            />
-            <Link
-              fontWeight={genre.id === selectedgenre?.id ? "bold" : "normal"}
-              onClick={() => onSelectgenre(genre)}
-              href="#"
-              fontSize="lg"
-              variant="plain"
-            >
-              {genre.name}
-            </Link>
-          </HStack>
-        </ListItem>
-      ))}
-    </ListRoot>
+    <>
+      <Heading fontSize="2xl" marginY={3}>
+        Genres
+      </Heading>
+      <ListRoot variant="plain">
+        {data.map((genre) => (
+          <ListItem key={genre.id} paddingY="5px">
+            <HStack>
+              <Image
+                boxSize="32px"
+                borderRadius={8}
+                objectFit="cover"
+                src={getCroppedImageUrl(genre.image_background)}
+              />
+              <Link
+                fontWeight={genre.id === selectedgenre?.id ? "bold" : "normal"}
+                onClick={() => onSelectgenre(genre)}
+                href="#"
+                fontSize="lg"
+                variant="plain"
+              >
+                {genre.name}
+              </Link>
+            </HStack>
+          </ListItem>
+        ))}
+      </ListRoot>
+    </>
   );
 }
